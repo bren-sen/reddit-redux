@@ -19,10 +19,13 @@ export const Navbar = () => {
     });
 
     return (
-        <nav>
-            <ul>
-               {listMenu}
-            </ul>
-        </nav>
+        <>
+            <h1>Reddit<span>Redux</span></h1>
+            <nav className="navbar">
+                <ul>
+                {listMenu}
+                </ul>
+            </nav>
+        </>
     );
 };
