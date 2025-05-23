@@ -4,17 +4,18 @@ import { fetchHotPosts } from "../../components/redditApi";
 
 const initialState = {
     pageStatus: 'isIdle', // 'isLoading', 'isError', 'isSuccess'
-    hotPosts: []
+    hotPosts: {data: {
+        after: null,
+        before: null,
+        children: []
+        }
+    },
 };
 
 export const homepageSlice = createSlice({
     name: 'homepage',
     initialState: initialState,
-    reducers: {
-        addPosts(state, action) {
-            state.hotPosts = action.payload;
-        }
-    },
+    reducers: {},
     extraReducers(builder) {
         builder.addCase(fetchHotPosts.pending, (state) => {
             state.pageStatus = 'isLoading';
@@ -31,7 +32,7 @@ export const homepageSlice = createSlice({
 });
 
 
-export const { addPosts } = homepageSlice.actions;
+//export const { reducers here } = homepageSlice.actions;
 export default homepageSlice.reducer;
 export const selectHotPosts = (state) => state.homepage.hotPosts;
 export const selectPageStatus = (state) => state.homepage.pageStatus;

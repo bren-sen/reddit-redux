@@ -5,6 +5,7 @@ import { Post } from '../../components/Post';
 import { fetchHotPosts } from "../../components/redditApi";
 
 
+//Display the top posts of the day
 export const Homepage = () => {
 
     const pageStatus = useSelector(selectPageStatus);
@@ -12,9 +13,12 @@ export const Homepage = () => {
     const dispatch = useDispatch();
 
     useEffect( () => {
-        dispatch(fetchHotPosts());
-    }, [dispatch] );
-   
+        if (hotPosts.data.children.length === 0) {
+            dispatch(fetchHotPosts());
+        };
+    }, [dispatch, hotPosts.data.children.length] );
+
+
     let content;
 
     if (pageStatus === 'isLoading') {
@@ -39,6 +43,7 @@ export const Homepage = () => {
 
     return (
         <>
+            
             <h2>Popular on reddit today</h2>
             {content}
             {pageStatus === 'isSuccess' && hotPosts.data.children.map(post => <Post post={post} key={post.data.id}/>)}

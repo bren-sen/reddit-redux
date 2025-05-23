@@ -1,21 +1,37 @@
-import { Outlet, useParams } from "react-router-dom";
+import { fetchTopSubreddits } from "../../components/redditApi";
+import { useSelector, useDispatch } from "react-redux";
+import { useEffect } from "react";
+import { selectHotSubs, selectPageStatus } from "./subredditspageSlice";
+import { Sub } from '../../components/Sub';
 
-
-// searching for a subreddit will display posts from that sub here. 
-// Clicking on title will open post with comments in postpage. 
-// Clicking on author will open user in userpage
+//Display the top subbreddits of the day
 export const Subredditspage = () => {
+
+    const pageStatus = useSelector(selectPageStatus);
+    const hotSubs = useSelector(selectHotSubs);
+    const dispatch = useDispatch();
+
+     useEffect( () => {
+        if (hotSubs.data.children.length === 0) {
+            dispatch(fetchTopSubreddits());
+        };
+    }, [dispatch] );
+    
+    let content;
+
+    if (pageStatus === 'isLoading') {
+        content = <h3>Loading top subreddits...</h3>;
+    } else if (pageStatus === 'isError') {
+        content = <h3>Something went wrong...</h3>
+    } else if (pageStatus === 'isIdle' ) {
+        content = <button onClick={() => dispatch(fetchTopSubreddits())}>Try reloading the page</button>;
+    };
+
     return (
         <>
-            <p>Seach for your favourite subreddits</p>
-            <Outlet/>
+            <h2>Top subreddits Today:</h2>
+            {content}
+            {pageStatus === 'isSuccess' && hotSubs.data.children.map(sub => <Sub sub={sub} key={sub.data.id} />)}
         </>
     )
 }
-
-export const Sub = () => {
-    const { sub } = useParams();
-    return (
-        <h2>Viewing posts from the following subreddit: {sub}</h2>
-    )
-};

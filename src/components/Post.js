@@ -12,7 +12,7 @@ export const Post = ({ post }) => {
 
     return (
         <section className="post">
-            <Link to={`/posts/${postId}`}>
+            <Link to={`/post/${postId}`}>
                 <h3>{postData.title}</h3>
             </Link>
             <p>{postType}</p>

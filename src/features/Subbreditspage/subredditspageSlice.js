@@ -4,7 +4,12 @@ import { fetchTopSubreddits } from "../../components/redditApi";
 
 const initialState = {
     pageStatus: 'isIdle', // 'isLoading', 'isError', 'isSuccess'
-    hotSubs: []
+    hotSubs: {data: {
+        after: null,
+        before: null,
+        children: []
+        }
+    }
 };
 
 export const subredditspageSlice = createSlice({
@@ -28,4 +33,5 @@ export const subredditspageSlice = createSlice({
 
 // export { reducer1, reducer2, ...} = homepageSlice.actions;
 export default subredditspageSlice.reducer;
-export const selectHotSubs = (state) => state.subredditspage.topSubs;
+export const selectHotSubs = (state) => state.subredditspage.hotSubs;
+export const selectPageStatus = (state) => state.subredditspage.pageStatus;

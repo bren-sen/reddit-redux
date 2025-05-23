@@ -2,28 +2,27 @@ import { Navbar } from '../components/Navbar';
 import './App.css';
 import { Routes, Route } from 'react-router-dom';
 import { Homepage } from '../features/homepage/Homepage';
-import { Subredditspage, Sub } from '../features/Subbreditspage/Subredditspage';
+import { Subredditspage } from '../features/Subbreditspage/Subredditspage';
 import { Postspage } from '../features/Postspage/Postspage';
-import { Userspage, User } from '../features/Users/Userspage';
-import { Comments } from '../features/commentsPage/Comments';
+import { Userspage } from '../features/Users/Userspage';
+import { Comments } from '../features/commentspage/Commentspage';
 import { NotFound } from '../components/NotFound';
+import { SearchBar } from '../components/SearchBar';
+import { SearchResultsPage } from '../features/searchResultsPage/SearchResultsPage';
 
 
 function App() {
   return (
     <>
       <Navbar/>
+      <SearchBar/>
       <Routes>
         <Route path='/' element={<Homepage/>} />
-        <Route path='subreddits' element={<Subredditspage/>}>
-          <Route path=':sub' element={<Sub/>} />
-        </Route>
-        <Route path='posts' element={<Postspage/>}>
-          <Route path=':id' element={<Comments/>} />
-        </Route>
-        <Route path='users' element={<Userspage/>}>
-          <Route path=':userName' element={<User/>}/>
-        </Route>
+        <Route path='subreddits' element={<Subredditspage/>} />
+        <Route path='subreddits/:subName' element={<Postspage/>} />
+        <Route path='post/:postId' element={<Comments/>} />
+        <Route path='search/:searchInput' element={<SearchResultsPage/>} />
+        <Route path='users/:userName' element={<Userspage/>}/>
         <Route path='*' element={<NotFound/>} />
       </Routes>
     </>
