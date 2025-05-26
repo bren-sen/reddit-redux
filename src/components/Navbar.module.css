@@ -1,0 +1,39 @@
+.header {
+  display: flex;
+  align-items: flex-end;
+  background: linear-gradient(light-dark(var(--light-header-bg), var(--dark-header-bg)), 70%, light-dark(var(--light-bg), var(--dark-bg)));
+  padding-block-end: 2rem;
+}
+
+.nav {
+  margin-left: auto;
+}
+
+.li {
+  display: inline-block;
+  padding-right: 1rem;
+}
+
+.ul {
+  margin: 0;
+  padding: 0;
+}
+
+.title1 {
+  font-size: clamp(1.5rem, 1.166rem + 1.529vw, 3rem);
+  margin: 1rem 0 0 1rem;
+  line-height: 1;
+  color: light-dark(var(--light-logo), var(--dark-logo));
+  text-shadow: 0 0 5px light-dark(var(--light-logo), var(--dark-logo));
+}
+
+.title2 {
+  color: light-dark(var(--light-title), var(--dark-title));
+  text-shadow: 0 0 5px light-dark(var(--light-title), var(--dark-title));
+}
+
+.links {
+    color: light-dark(var(--light-nav), var(--dark-nav));
+    text-shadow: 0 0 5px light-dark(var(--light-nav), var(--dark-nav));
+    font-size: clamp(1rem, 0.721rem + 1.274vw, 2.25rem);
+}

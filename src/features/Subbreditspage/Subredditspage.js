@@ -4,6 +4,7 @@ import { useEffect } from "react";
 import { selectHotSubs, selectPageStatus } from "./subredditspageSlice";
 import { Sub } from '../../components/Sub';
 
+
 //Display the top subbreddits of the day
 export const Subredditspage = () => {
 
@@ -29,7 +30,7 @@ export const Subredditspage = () => {
 
     return (
         <>
-            <h2>Top subreddits Today:</h2>
+            <h2 className="page-title">Top subreddits Today:</h2>
             {content}
             {pageStatus === 'isSuccess' && hotSubs.data.children.map(sub => <Sub sub={sub} key={sub.data.id} />)}
         </>

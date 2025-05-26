@@ -5,6 +5,7 @@ import { selectCurrentPost, selectCurrentPostId, selectPageStatus } from "./comm
 import { fetchComments } from "../../components/redditApi";
 import { Post } from "../../components/Post";
 import { Comment } from "../../components/Comment";
+import styles from './Commentspage.module.css'
 
 
 //Display a single post and its comments
@@ -33,9 +34,13 @@ export const Comments = () => {
 
     return (
         <>
-            {(pageStatus === 'isIdle' || pageStatus === 'isLoading') && <p>Working on it...Try refreshing your browser if your post is not loading</p>}
-            {pageStatus === 'isSuccess' && postId === loadedPostId && <Post post={singlePost} />}
-            {pageStatus === 'isSuccess' && postId === loadedPostId && comments.data.children.map(comment => <Comment comment={comment} source='postView' key={comment.data.id} />)}
+            <section className={styles.post}>
+                {(pageStatus === 'isIdle' || pageStatus === 'isLoading') && <p>Working on it...Try refreshing your browser if your post is not loading</p>}
+                {pageStatus === 'isSuccess' && postId === loadedPostId && <Post post={singlePost} />}
+            </section>
+            <section className={styles.comments}>
+                {pageStatus === 'isSuccess' && postId === loadedPostId && comments.data.children.map(comment => comment.kind === 't1' && <Comment comment={comment} source='postView' key={comment.data.id} />)}
+            </section>
         </>
     )
 

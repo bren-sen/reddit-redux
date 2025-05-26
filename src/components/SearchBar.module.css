@@ -1,0 +1,41 @@
+.searchform {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    font-size: clamp(1rem, 0.889rem + 0.51vw, 1.5rem);
+}
+
+.input {
+    width: 18ch;
+    font-size: inherit;
+    transition: width 0.2s;
+    border: none;
+    border-radius: 5px;
+    box-shadow: 0px 0px 10px light-dark(var(--light-title), var(--dark-title)), -0px -0px 10px light-dark(var(--light-title), var(--dark-title));
+}
+
+.input:focus {
+    width: 36ch;
+    outline: none;
+    box-shadow: 0 0 0 0.25rem light-dark(var(--light-title), var(--dark-title));
+}
+
+
+.button {
+    font-size: inherit;
+}
+
+.button {
+    position: relative;
+    border: 1px solid light-dark(var(--light-nav), var(--dark-nav));
+    border-radius: 5px;
+    padding: 10px;
+    cursor: pointer;
+    font-size: clamp(1rem, 0.889rem + 0.51vw, 1.5rem);
+    background-color: light-dark(white, black);
+}
+
+.button:active {
+    box-shadow: 5px 5px 5px light-dark(var(--light-box-shadow-d), var(--dark-box-shadow-d)) inset, -5px -5px 5px light-dark(var(--light-box-shadow-l), var(--dark-box-shadow-l)) inset;
+}
+

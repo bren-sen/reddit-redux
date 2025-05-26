@@ -1,19 +1,37 @@
 :root {
   color-scheme: light dark;
 
-  --light-logo: hsl(20.17, 100%, 53.92%);
-  --light-header-bg: hsl(211, 88%, 74%);
+  --light-logo: hsl(9, 100%, 54%);
+  --light-title: hsl(225, 100%, 52%);
+  --light-nav: hsl(321, 100%, 55%);
+  --light-header-bg: hsl(0, 0%, 100%);
+  --light-bg: hsl(0, 0%, 95%);
+  --light-card-bg: hsl(0, 0%, 95%);
+  --light-box-shadow-l: hsl(0, 0%, 100%);
+  --light-box-shadow-d: hsl(0, 0%, 90%);
 
-  --dark-header-bg: hsl(210.65, 67.15%, 19.41%);
+
+  --dark-logo: hsl(9, 100%, 54%);
+  --dark-title: hsl(212, 100%, 61%);
+  --dark-nav: hsl(321, 100%, 56%);
+  --dark-header-bg: hsl(0, 0%, 0%);
+  --dark-bg: hsl(0, 0%, 5%);
+  --dark-card-bg: hsl(0, 0%, 5%);
+  --dark-box-shadow-l: hsl(0, 0%, 10%);
+  --dark-box-shadow-d: hsl(0, 0%, 0%);
 }
 
 body {
   margin: 0;
   padding: 0;
   font-family: Nunito, sans-serif;
+  background-color: light-dark(var(--light-bg), var(--dark-bg));
+  min-height: 100svh;
 }
 
 @font-face {
   font-family: Nunito;
-  src: url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap');
+  src: url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap') format('ttf');
 }
+
+/* breaking point for navbar and searchbar < 430px */

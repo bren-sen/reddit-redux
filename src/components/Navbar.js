@@ -1,4 +1,5 @@
 import { NavLink } from "react-router-dom";
+import styles from './Navbar.module.css';
 
 //Toggle between the top posts and top subreddits of the day
 export const Navbar = () => {
@@ -12,17 +13,17 @@ export const Navbar = () => {
 
     const listMenu = menu.map(item => {
         return (
-            <li key={item.id}>
-                <NavLink to={item.url}>{item.page}</NavLink>
+            <li key={item.id} className={styles.li}>
+                <NavLink to={item.url} className={styles.links}>{item.page}</NavLink>
             </li>
         )
     });
 
     return (
-        <header>
-            <h1>Reddit<span>Redux</span></h1>
-            <nav>
-                <ul>
+        <header className={styles.header}>
+            <h1 className={styles.title1}>Reddit<span className={styles.title2}>Redux</span></h1>
+            <nav className={styles.nav}>
+                <ul className={styles.ul}>
                 {listMenu}
                 </ul>
             </nav>

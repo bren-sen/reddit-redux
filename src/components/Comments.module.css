@@ -1,0 +1,15 @@
+.comment {
+    width: min(100% - 50px, 38rem);
+    margin-inline: auto;
+    overflow-x: hidden;
+}
+
+.commentTitle {
+    margin-block: 0.5rem;
+}
+
+.commentBody {
+    margin-block-start: 0;
+    padding-inline-start: 0.5rem;
+    border-inline-start: 1px solid light-dark(var(--light-logo), var(--dark-logo));
+}

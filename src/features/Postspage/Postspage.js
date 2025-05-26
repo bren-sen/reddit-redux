@@ -24,7 +24,7 @@ export const Postspage = () => {
 
     return (
         <>
-            <h2>{subName}</h2>
+            <h2 className="page-title">{subName}</h2>
             {currentSubStatus === 'isSuccess' && currentSubName === subName && currentSub.data.children.map(post => <Post post={post} key={post.data.id} />)}
         </>
     )

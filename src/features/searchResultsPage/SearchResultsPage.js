@@ -24,7 +24,7 @@ export const SearchResultsPage = () => {
 
     return (
         <>
-            <h2>Top posts for <span>{searchInput}</span></h2>
+            <h2 className="page-title">Top posts for <span>{searchInput}</span></h2>
             {pageStatus === 'isIdle' && <p>Page not loading</p>}
             {pageStatus === 'isSuccess' && searchInput === searchTerm && currentSearch.data.children.map(post => <Post post={post} key={post.data.id} />)}
         </>

@@ -25,7 +25,7 @@ export const Userspage = () => {
 
     return (
         <>
-            <h2>{userName}</h2>
+            <h2 className="page-title">{userName}</h2>
             {pageStatus === 'isSuccess' && user === userName && userData.data.children.map(child => {
                 if (child.kind === 't3') {
                     return <Post post={child} key={child.data.id} />

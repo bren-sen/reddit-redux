@@ -1,0 +1,35 @@
+.sub {
+    width: min(100% - 50px, 38rem);
+    margin-inline: auto;
+    margin-block-end: 2rem;
+    border-radius: 5px;
+    background-color: light-dark(var(--light-card-bg), var(--dark-card-bg));
+    box-shadow: 10px 10px 10px light-dark(var(--light-box-shadow-d), var(--dark-box-shadow-d)), -10px -10px 10px light-dark(var(--light-box-shadow-l), var(--dark-box-shadow-l));
+}
+
+.sub:nth-child(even) {
+    border: 1px solid light-dark(var(--light-logo), var(--dark-logo));
+}
+
+.sub:nth-child(odd) {
+    border: 1px solid light-dark(var(--light-title), var(--dark-title));
+}
+
+.subBody,
+.subHeader {
+    width: 100% - 2rem;
+    margin-inline: 1rem;
+}
+
+.subHeader{
+    padding-block-start: 1rem;
+}
+
+.subBody {
+    padding-block-end: 0.5rem;
+}
+
+.subImg {
+    max-width: 100%;
+    height: auto;
+}

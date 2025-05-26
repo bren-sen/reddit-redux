@@ -3,6 +3,7 @@ import { selectHotPosts, selectPageStatus } from "./homepageSlice";
 import { useEffect } from "react";
 import { Post } from '../../components/Post';
 import { fetchHotPosts } from "../../components/redditApi";
+import styles from './Homepage.module.css';
 
 
 //Display the top posts of the day
@@ -22,11 +23,11 @@ export const Homepage = () => {
     let content;
 
     if (pageStatus === 'isLoading') {
-        content = <h3>Loading posts...</h3>;
+        content = <h3 className={styles.noContent}>Loading posts...</h3>;
     } else if (pageStatus === 'isError') {
-        content = <h3>Oops, something went wrong!</h3>;
+        content = <h3 className={styles.noContent}>Oops, something went wrong!</h3>;
     } else if (pageStatus === 'isIdle' ) {
-        content = <button onClick={() => dispatch(fetchHotPosts())}>Try reloading the page</button>;
+        content = <button className={styles.noContent} onClick={() => dispatch(fetchHotPosts())}>Try reloading the page</button>;
         };
      
     const handleMoreClick = () => {
@@ -44,11 +45,13 @@ export const Homepage = () => {
     return (
         <>
             
-            <h2>Popular on reddit today</h2>
+            <h2 className="page-title">Popular on reddit today</h2>
             {content}
             {pageStatus === 'isSuccess' && hotPosts.data.children.map(post => <Post post={post} key={post.data.id}/>)}
-            {hotPosts.data.before !== null && <button onClick={handleLessClick} >Previous posts</button>}
-            <button onClick={handleMoreClick} >See more posts</button>
+            <div className={styles.pageEnd}>
+                {hotPosts.data.before !== null && <button onClick={handleLessClick} >Previous posts</button>}
+                <button onClick={handleMoreClick} >See more posts</button>
+            </div>
         </>
     )
 };

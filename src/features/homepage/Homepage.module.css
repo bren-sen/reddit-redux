@@ -1,0 +1,14 @@
+
+.pageEnd {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    height: 3rem;
+    padding-block-end: 1rem;
+}
+
+.noContent {
+    text-align: center;
+    margin-inline: auto;
+}

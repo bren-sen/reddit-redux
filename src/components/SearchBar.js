@@ -1,34 +1,41 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { useDispatch } from "react-redux";
+import styles from './SearchBar.module.css';
 
 
 export const SearchBar = () => {
 
     const [searchInput, setSearchInput] = useState("");
     const navigate = useNavigate();
-    const dispatch = useDispatch();
 
     const handleInput = (e) => {
         e.preventDefault();
         setSearchInput(e.target.value);
     };
 
-    const handleSubmit = () => {
+    const handleSubmit = (e) => {
+        e.preventDefault();
         navigate(`/search/${searchInput}`);
+        setSearchInput('');
     };
 
     return (
-        <div className="search-box">
+        <form className={styles.searchform} id="search" onSubmit={handleSubmit}>
             <input 
-                type="text" 
+                type="search"
+                className={styles.input}
                 id="searchWord" 
                 name="searchWord" 
                 value={searchInput} 
                 onChange={handleInput}
                 placeholder="Find more posts"
+                required
             />
-            <button onClick={handleSubmit}>Search</button>
-        </div>
+            <input 
+                type="submit" 
+                value='Search'
+                className={styles.button}
+            />
+        </form>
     )
 };
